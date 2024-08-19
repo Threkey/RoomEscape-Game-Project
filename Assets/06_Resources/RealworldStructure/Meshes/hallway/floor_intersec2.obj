@@ -1,0 +1,16 @@
+# Blender v2.79 (sub 0) OBJ File: 'floor_intersec2.blend'
+# www.blender.org
+mtllib floor_intersec2.mtl
+o object_static_floor_intersec2_Plane.001
+v -11.754633 0.106292 9.017654
+v 11.139978 0.106292 9.017654
+v -11.754633 0.106292 -8.146885
+v 11.139978 0.106292 -8.146885
+vt 0.000087 0.000087
+vt 0.999913 0.000087
+vt 0.999913 0.749676
+vt 0.000087 0.749676
+vn 0.0000 1.0000 0.0000
+usemtl Material.001
+s off
+f 1/1/1 2/2/1 4/3/1 3/4/1

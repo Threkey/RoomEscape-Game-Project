@@ -1,0 +1,16 @@
+# Blender v2.79 (sub 0) OBJ File: 'bedroom_structure_floor.blend'
+# www.blender.org
+mtllib bedroom_structure_floor.mtl
+o object_static_studyFloor_Plane.001
+v -20.441294 -4.641398 10.352165
+v 19.678720 -4.641398 10.352165
+v -20.441294 -4.641398 -11.235447
+v 19.678720 -4.641398 -11.235447
+vt 0.000073 0.000073
+vt 0.999927 0.000073
+vt 0.999927 0.538070
+vt 0.000073 0.538070
+vn 0.0000 1.0000 0.0000
+usemtl None
+s off
+f 1/1/1 2/2/1 4/3/1 3/4/1
