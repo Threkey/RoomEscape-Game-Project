@@ -21,7 +21,7 @@ public class Managers : MonoBehaviour
     public static UIManager UI { get { return Instance._ui; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
 
-
+    public GameObject goMainCharacter;
     GameObject panelLoad;
     Color color = Color.black;
 
@@ -136,19 +136,38 @@ public class Managers : MonoBehaviour
         }
     }
 
+
     public string GetName()
     {
+#if UNITY_EDITOR
+        return "Character Name";
+#endif
         string name = "";
 
         if (!currentUrl.Contains("name="))
             return "";
 
         // 이름 찾기
-        for (int i = currentUrl.IndexOf("name=") + 5; i < currentUrl.Length; i++)
+        for (int i = currentUrl.IndexOf("name=") + 5; i < currentUrl.Length || currentUrl[i] != '='; i++)
         {
             name += currentUrl[i];
         }
 
         return name;
+    }
+
+    public bool isCharacterNearby(GameObject go)
+    {
+        if(Vector3.Distance(goMainCharacter.transform.position, go.transform.position) <= 3.0f)
+            return true;
+        else
+            return false;
+    }
+    public bool isCharacterNearby(GameObject go, float distance)
+    {
+        if (Vector3.Distance(goMainCharacter.transform.position, go.transform.position) <= distance)
+            return true;
+        else
+            return false;
     }
 }

@@ -6,6 +6,10 @@ public class Calendar : MonoBehaviour
 {
     Managers gm;
     UIManager ui;
+
+    [SerializeField]
+    [TextArea(3, 5)]
+    string itemDescription;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +24,15 @@ public class Calendar : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject == this.gameObject)
+            if (gm.isCharacterNearby(this.gameObject))
             {
-                ui.OpenPopup();
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    if (ui.GetCurrentItemImage() == null || ui.GetCurrentItemImage() == ui.spriteDiary)
+                        ui.ChangeItemImage(ui.spritesCalendar[0]);
+                    ui.ChangeItemDescription(itemDescription);
+                    ui.OpenPopup(true);
+                }
             }
         }
     }

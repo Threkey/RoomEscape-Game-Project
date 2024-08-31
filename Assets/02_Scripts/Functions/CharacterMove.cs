@@ -48,11 +48,13 @@ public class CharacterMove : MonoBehaviour
         // 레이캐스트 위치 destPos설정
         if(Physics.Raycast(ray, out hit))
         {
-            destPos = hit.point;
-            isMove = true;
+            if(hit.collider.tag == "Floor")
+            {
+                destPos = hit.point;
+                isMove = true;
 
-            agent.SetDestination(destPos);
-
+                agent.SetDestination(destPos);
+            }
         }
     }
 

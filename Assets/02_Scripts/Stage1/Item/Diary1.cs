@@ -6,6 +6,10 @@ public class Diary1 : MonoBehaviour
 {
     Managers gm;
     UIManager ui;
+
+    [SerializeField]
+    [TextArea(3, 5)]
+    string itemDescription;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +24,17 @@ public class Diary1 : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject == this.gameObject)
+            if (gm.isCharacterNearby(this.gameObject))
             {
-                StartCoroutine(gm.coSendData(gm.GetName(), gm.diary1Url));
-                gm.isGetDiary1 = true;
-                ui.OpenPopup();
-                this.gameObject.SetActive(false);
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    StartCoroutine(gm.coSendData(gm.GetName(), gm.diary1Url));
+                    gm.isGetDiary1 = true;
+                    ui.ChangeItemImage(ui.spriteDiary);
+                    ui.ChangeItemDescription(itemDescription);
+                    ui.OpenPopup(false);
+                    this.gameObject.SetActive(false);
+                }
             }
         }
     }

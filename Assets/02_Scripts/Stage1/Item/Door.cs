@@ -24,17 +24,12 @@ public class Door : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (gm.isBookshelfMoved && hit.collider.gameObject == this.gameObject)
+            if (gm.isCharacterNearby(this.gameObject))
             {
-                if (!gm.isUnlocked)
+                if (gm.isBookshelfMoved && hit.collider.gameObject == this.gameObject)
                 {
                     ui.SubCameraOn();
                     // 자물쇠 
-                }
-                else if (gm.isUnlocked)
-                {
-                    Debug.Log("스테이지 클리어");
-                    StartCoroutine(gm.coSendData(gm.GetName(), gm.lv2Url));
                 }
             }
         }

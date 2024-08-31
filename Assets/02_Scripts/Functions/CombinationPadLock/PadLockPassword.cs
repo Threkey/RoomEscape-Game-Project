@@ -23,10 +23,10 @@ public class PadLockPassword : MonoBehaviour
     {
         if (_moveRull._numberArray.SequenceEqual(_numberPassword))
         {
-
-            //Debug.Log("Password correct");
+            //비밀번호가 맞으면 잠금이 풀림
             gm.isUnlocked = true;
             ui.textMessage.gameObject.SetActive(true);
+            ui.btnDoorOpen.gameObject.SetActive(true);
             _moveRull.btnDown.gameObject.SetActive(false);
             _moveRull.btnUp.gameObject.SetActive(false);
             _moveRull.btnLeft.gameObject.SetActive(false);

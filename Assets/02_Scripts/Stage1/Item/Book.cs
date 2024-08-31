@@ -5,6 +5,7 @@ using UnityEngine;
 public class Book : MonoBehaviour
 {
     Managers gm;
+    UIManager ui;
     public GameObject bookShelf;
     public GameObject door;
 
@@ -14,6 +15,7 @@ public class Book : MonoBehaviour
     void Start()
     {
         gm = Managers.Instance;
+        ui = UIManager.Instance;
     }
 
     private void OnMouseDown()
@@ -23,11 +25,16 @@ public class Book : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if(gm.isGetDiary1 && hit.collider.gameObject == this.gameObject)
+            if(gm.isCharacterNearby(this.gameObject))
             {
-                door.SetActive(true);
-                bookShelf.transform.position = movedPosition;
-                gm.isBookshelfMoved = true;
+                if (gm.isGetDiary1 && hit.collider.gameObject == this.gameObject)
+                {
+                    door.SetActive(true);
+                    bookShelf.transform.position = movedPosition;
+                    gm.isBookshelfMoved = true;
+
+                    ui.ShowDialog();
+                }
             }
         }
     }
