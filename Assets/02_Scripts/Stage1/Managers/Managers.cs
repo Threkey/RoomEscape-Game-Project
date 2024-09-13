@@ -15,17 +15,16 @@ public class Managers : MonoBehaviour
 
     GameManager _game = new GameManager();
     UIManager _ui = new UIManager();
-    ResourceManager _resource = new ResourceManager();
 
     public static GameManager Game { get { return Instance._game; } }
     public static UIManager UI { get { return Instance._ui; } }
-    public static ResourceManager Resource { get { return Instance._resource; } }
 
     public GameObject goMainCharacter;
     GameObject panelLoad;
     Color color = Color.black;
 
-    public bool isGetDiary1 { get; set; } = false;
+    public bool isGetHint { get; set; } = false;
+    public bool isGetOfficeKnife { get; set; } = false;
     public bool isBookshelfMoved { get; set; } = false;
     public bool isUnlocked {  get; set; } = false;
 
@@ -145,20 +144,39 @@ public class Managers : MonoBehaviour
         string name = "";
 
         if (!currentUrl.Contains("name="))
-            return "";
+            return name;
+
+        if (!currentUrl.Contains("&token="))
+            return name;
+
+        int indexOfNameEnds = currentUrl.IndexOf("&token=");
 
         // 이름 찾기
-        for (int i = currentUrl.IndexOf("name=") + 5; i < currentUrl.Length || currentUrl[i] != '='; i++)
+        for (int i = currentUrl.IndexOf("name=") + 5; i < currentUrl.Length && i < indexOfNameEnds; i++)
         {
+            // 한글이랑 띄어쓰기 변환
+            if (currentUrl[i] == '%')
+            {
+                string tmp = "";
+                for (; currentUrl[i] == '%';)
+                {
+                    tmp += currentUrl[i++];
+                    tmp += currentUrl[i++];
+                    tmp += currentUrl[i++];
+                }
+                i--;
+
+                name += UnityWebRequest.UnEscapeURL(tmp);
+                continue;
+            }
             name += currentUrl[i];
         }
-
         return name;
     }
 
     public bool isCharacterNearby(GameObject go)
     {
-        if(Vector3.Distance(goMainCharacter.transform.position, go.transform.position) <= 3.0f)
+        if(Vector3.Distance(goMainCharacter.transform.position, go.transform.position) <= 4.5f)
             return true;
         else
             return false;

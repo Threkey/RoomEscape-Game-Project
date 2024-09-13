@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
+using System.Threading;
 
 public class CharacterMove : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class CharacterMove : MonoBehaviour
     NavMeshAgent agent;
 
     bool isMove = false;
+
+    public GameObject goMoveEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,15 @@ public class CharacterMove : MonoBehaviour
         if (Input.GetMouseButton(1) && !EventSystem.current.IsPointerOverGameObject())
         {
             SetDestination();
+        }
+
+        // ¿Ã∆Â∆Æ
+        if(Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            goMoveEffect.SetActive(false);
+            MoveEffect.timer = 0.0f;
+            goMoveEffect.SetActive(true);
+            goMoveEffect.transform.position = destPos;
         }
 
         LookMoveDirection();

@@ -6,6 +6,7 @@ public class Diary1 : MonoBehaviour
 {
     Managers gm;
     UIManager ui;
+    AudioSource au;
 
     [SerializeField]
     [TextArea(3, 5)]
@@ -15,6 +16,7 @@ public class Diary1 : MonoBehaviour
     {
         gm = Managers.Instance;
         ui = UIManager.Instance;
+        au = GameObject.Find("goPages").GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -28,11 +30,13 @@ public class Diary1 : MonoBehaviour
             {
                 if (hit.collider.gameObject == this.gameObject)
                 {
+                    ui.CloseDialog();
+                    au.Play();
                     StartCoroutine(gm.coSendData(gm.GetName(), gm.diary1Url));
-                    gm.isGetDiary1 = true;
                     ui.ChangeItemImage(ui.spriteDiary);
                     ui.ChangeItemDescription(itemDescription);
-                    ui.OpenPopup(false);
+                    ui.ChangeHintCode("");
+                    ui.OpenPopup();
                     this.gameObject.SetActive(false);
                 }
             }

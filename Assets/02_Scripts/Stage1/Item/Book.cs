@@ -6,6 +6,7 @@ public class Book : MonoBehaviour
 {
     Managers gm;
     UIManager ui;
+    AudioSource au;
     public GameObject bookShelf;
     public GameObject door;
 
@@ -16,6 +17,7 @@ public class Book : MonoBehaviour
     {
         gm = Managers.Instance;
         ui = UIManager.Instance;
+        au = GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -27,12 +29,13 @@ public class Book : MonoBehaviour
         {
             if(gm.isCharacterNearby(this.gameObject))
             {
-                if (gm.isGetDiary1 && hit.collider.gameObject == this.gameObject)
+                if (gm.isGetHint && hit.collider.gameObject == this.gameObject)
                 {
+                    au.Play();
                     door.SetActive(true);
                     bookShelf.transform.position = movedPosition;
                     gm.isBookshelfMoved = true;
-
+                    GetComponent<BoxCollider>().enabled = false;
                     ui.ShowDialog();
                 }
             }

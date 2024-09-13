@@ -8,6 +8,7 @@ public class MoveRuller : MonoBehaviour
 {
     PadLockPassword _lockPassword;
     PadLockEmissionColor _pLockColor;
+    AudioSource au;
 
     [HideInInspector]
     public List <GameObject> _rullers = new List<GameObject>();
@@ -47,6 +48,8 @@ public class MoveRuller : MonoBehaviour
 
     private void Start()
     {
+        au = GetComponent<AudioSource>();
+
         btnLeft = transSubCanvas.Find("Button_Left").GetComponent<Button>();
         btnRight = transSubCanvas.Find("Button_Right").GetComponent<Button>();
         btnUp = transSubCanvas.Find("Button_Up").GetComponent<Button>();
@@ -188,6 +191,7 @@ public class MoveRuller : MonoBehaviour
 
     public void RotateRullersUp()
     {
+        au.Play();
         _isActveEmission = true;
         _scroolRuller = 36;
         _rullers[_changeRuller].transform.Rotate(-_scroolRuller, 0, 0, Space.Self);
@@ -202,6 +206,7 @@ public class MoveRuller : MonoBehaviour
 
     public void RotateRullersDown()
     {
+        au.Play();
         _isActveEmission = true;
         _scroolRuller = 36;
         _rullers[_changeRuller].transform.Rotate(_scroolRuller, 0, 0, Space.Self);

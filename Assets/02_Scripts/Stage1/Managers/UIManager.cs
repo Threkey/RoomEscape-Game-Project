@@ -20,35 +20,49 @@ public class UIManager : MonoBehaviour
     //Button btnOpenItem;
     Button btnCloseItem;
     Button btnClosePopup;
-    Button btnLeft;
-    Button btnRight;
     GameObject dialogRecord;
     GameObject item;
     GameObject itemPopup;
     TextMeshProUGUI textItemDescription;
-    TextMeshProUGUI[] textDialogRecords = new TextMeshProUGUI[2];
+    TextMeshProUGUI textHintCode;
+    public Button btnHintReveal;
 
+    TextMeshProUGUI[] textDialogRecords;
     GameObject goDialog;
     Button btnDialog;
     TextMeshProUGUI textDialog;
 
     public Sprite spriteDiary;
     public Sprite spriteDiaryIcon;
-    public Sprite[] spritesCalendar = new Sprite[12];
+    public Sprite spritePaintingA;
+    public Sprite spritePaintingB;
+    public Sprite spriteOfficeKnife;
 
     Button btnBack;
     [HideInInspector]
     public TextMeshProUGUI textMessage;
     [HideInInspector]
     public Button btnDoorOpen;
+    TextMeshProUGUI textUnlockMessage;
 
     Camera subCamera;
+
+    // 사운드
+    AudioSource au;
+    public AudioClip[] audioClips;      // 0: 버튼클릭, 1: 사진 들추기, 2: 숨겨진 문 작동
+
+    void Awake()
+    {
+        gm = Managers.Instance;
+        dl = Dialog.Instance;
+        au = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        gm = Managers.Instance;
-        dl = Dialog.Instance;
+        // Dialog
+        textDialogRecords = new TextMeshProUGUI[dl.dialogArr.Length];
 
         // Camera
         subCamera = GameObject.Find("SubCamera").GetComponent<Camera>();
@@ -68,12 +82,13 @@ public class UIManager : MonoBehaviour
         btnCloseDialog = dialogRecord.GetComponent<Transform>().Find("ButtonCloseDialog").GetComponent<Button>();
         btnCloseItem = item.GetComponent<Transform>().Find("ButtonCloseItem").GetComponent<Button>();
         btnClosePopup = itemPopup.GetComponent<Transform>().Find("ButtonClosePopup").GetComponent<Button>();
-        btnLeft = itemPopup.transform.Find("Button_Left").GetComponent<Button>();
-        btnRight = itemPopup.transform.Find("Button_Right").GetComponent<Button>();
         goDialog = transCanvas.Find("Image_Dialog").gameObject;
         btnDialog = transCanvas.Find("Button_Dialog").GetComponent<Button>();
         textDialog = goDialog.transform.Find("Text_Dialog").GetComponent<TextMeshProUGUI>();
         textItemDescription = itemPopup.transform.Find("TextItemDescription").GetComponent<TextMeshProUGUI>();
+        btnHintReveal = itemPopup.transform.Find("Image").Find("Button_RevealHint").GetComponent<Button>();
+        textHintCode = itemPopup.transform.Find("Text_HintCode").GetComponent<TextMeshProUGUI>();
+
 
         for (int i = 0; i < textDialogRecords.Length; i++)
             textDialogRecords[i] = dialogRecord.transform.Find("Scroll View").Find("Viewport").Find("Content").Find("Text_DialogRecord (" + i + ")").GetComponent<TextMeshProUGUI>();
@@ -81,7 +96,8 @@ public class UIManager : MonoBehaviour
         btnBack = transSubCanvas.Find("Button_Back").GetComponent<Button>();
         textMessage = transSubCanvas.Find("Text_Message").GetComponent<TextMeshProUGUI>();
         btnDoorOpen = transSubCanvas.Find("Button_DoorOpen").GetComponent<Button>();
-        
+        textUnlockMessage = transSubCanvas.Find("Text_UnlockMessage").GetComponent<TextMeshProUGUI>();
+
         // Button Events
         btnOpenDialog.onClick.AddListener(OpenDialogRecord);
         btnCloseDialog.onClick.AddListener(CloseDialogRecord);
@@ -89,13 +105,23 @@ public class UIManager : MonoBehaviour
         //btnCloseItem.onClick.AddListener(CloseItem);
         btnClosePopup.onClick.AddListener(ClosePopup);
         btnBack.onClick.AddListener(SubCameraOff);
-        btnLeft.onClick.AddListener(CalendarLeft);
-        btnRight.onClick.AddListener(CalendarRight);
         btnDoorOpen.onClick.AddListener(StageClear);
         btnDialog.onClick.AddListener(CloseDialog);
+        btnHintReveal.onClick.AddListener(ChangePaintingImage);
 
         // 게임 시작하자마자 첫 대사 출력
         ShowDialog();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            au.clip = audioClips[3];
+            au.volume = 0.3f;
+            au.pitch = 2.0f;
+            au.Play();
+        }
     }
 
     static void Init()
@@ -116,12 +142,21 @@ public class UIManager : MonoBehaviour
 
     void OpenDialogRecord()
     {
+        CloseDialog();
+        au.clip = audioClips[0];
+        au.volume = 1.0f;
+        au.pitch = 1.0f;
+        au.Play();
         dialogRecord.SetActive(true);
         btnOpenDialog.gameObject.SetActive(false);
     }
 
     void CloseDialogRecord()
     {
+        au.clip = audioClips[0];
+        au.volume = 1.0f;
+        au.pitch = 1.0f;
+        au.Play();
         dialogRecord.SetActive(false);
         btnOpenDialog.gameObject.SetActive(true);
     }
@@ -141,25 +176,27 @@ public class UIManager : MonoBehaviour
     */
 
 
-    public void OpenPopup(bool isCalendar)
+    public void OpenPopup()
     {
-        if (isCalendar)
-        {
-            btnLeft.gameObject.SetActive(true);
-            btnRight.gameObject.SetActive(true);
-        }
-        else
-        {
-            btnRight.gameObject.SetActive(false);
-            btnLeft.gameObject.SetActive(false);
-        }
-
         itemPopup.SetActive(true);
     }
 
     void ClosePopup()
     {
+        au.clip = audioClips[0];
+        au.volume = 1.0f;
+        au.pitch = 1.0f;
+        au.Play();
         itemPopup.SetActive(false);
+
+        if(gm.isGetHint && dl.GetCurrentDialogIndex() == 1)
+        {
+            ShowDialog();
+            au.clip = audioClips[2];
+            au.volume = 1.0f;
+            au.pitch = 1.0f;
+            au.Play();
+        }
     }
 
     public void SubCameraOn()
@@ -180,12 +217,6 @@ public class UIManager : MonoBehaviour
     {
         itemPopup.transform.Find("Image").GetComponent<Image>().sprite = sprite;
         itemPopup.transform.Find("Image").GetComponent<Image>().preserveAspect = true;
-
-        if (sprite == spritesCalendar[0])
-        {
-            btnLeft.interactable = false;
-            btnRight.interactable = true;
-        }
             
     }
 
@@ -196,46 +227,27 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void CalendarLeft()
+    public void ChangePaintingImage()
     {
-        for(int i = 1; i < spritesCalendar.Length; i++)
+        if(GetCurrentItemImage() == spritePaintingA)
         {
-            if(GetCurrentItemImage() == spritesCalendar[i])
-            {
-                ChangeItemImage(spritesCalendar[i - 1]);
-                break;
-            }
-                
+            ChangeItemImage(spritePaintingB);
+            au.clip = audioClips[1];
+            au.volume = 1.0f;
+            au.pitch = 1.0f;
+            au.Play();
+            gm.isGetHint = true;
         }
 
-        if(GetCurrentItemImage() == spritesCalendar[0])
-            btnLeft.interactable = false;
-        if(!btnRight.IsInteractable())
-            btnRight.interactable = true;
-    }
-
-    void CalendarRight()
-    {
-        for (int i = 0; i < spritesCalendar.Length - 1; i++)
-        {
-            if (GetCurrentItemImage() == spritesCalendar[i])
-            {
-                ChangeItemImage(spritesCalendar[i + 1]);
-                break;
-            }
-                
-        }
-
-        if (GetCurrentItemImage() == spritesCalendar[spritesCalendar.Length - 1])
-            btnRight.interactable = false;
-        if (!btnLeft.IsInteractable())
-            btnLeft.interactable = true;
+        else if (GetCurrentItemImage() == spritePaintingB)
+            ChangeItemImage(spritePaintingA);
     }
 
     void StageClear()
     {
         // 스테이지 클리어시 해야할 것들 넣기
         Debug.Log("스테이지 클리어");
+        textUnlockMessage.gameObject.SetActive(true);
         StartCoroutine(gm.coSendData(gm.GetName(), gm.lv2Url));
     }
 
@@ -258,8 +270,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void CloseDialog()
+    public void CloseDialog()
     {
+        if(dl.GetCurrentDialogIndex() == 0)
+        {
+            ShowDialog();
+            return;
+        }
         goDialog.SetActive(false);
         btnDialog.gameObject.SetActive(false);
     }
@@ -267,5 +284,13 @@ public class UIManager : MonoBehaviour
     public void ChangeItemDescription(string description)
     {
         textItemDescription.text = description;
+    }
+
+    public void ChangeHintCode(string code)
+    {
+        if (code == "")
+            textHintCode.text = "";
+        else
+            textHintCode.text = "HintCode: " + code;
     }
 }
