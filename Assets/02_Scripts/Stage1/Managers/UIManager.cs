@@ -73,20 +73,20 @@ public class UIManager : MonoBehaviour
         transSubCanvas.gameObject.SetActive(false);
 
         // Objects
-        dialogRecord = transCanvas.Find("ImageDialog").gameObject;
-        item = transCanvas.Find("ParentItem").gameObject;
-        itemPopup = transCanvas.Find("PanelItemPopup").gameObject;
+        dialogRecord = transCanvas.Find("Image_DialogRecord").gameObject;
+        item = transCanvas.Find("Parent_Item").gameObject;
+        itemPopup = transCanvas.Find("Panel_ItemPopup").gameObject;
 
-        btnOpenDialog = GameObject.Find("ButtonOpenDialog").GetComponent<Button>();
+        btnOpenDialog = GameObject.Find("Button_OpenDialogRecord").GetComponent<Button>();
         //btnOpenItem = GameObject.Find("ButtonOpenItem").GetComponent<Button>();
-        btnCloseDialog = dialogRecord.GetComponent<Transform>().Find("ButtonCloseDialog").GetComponent<Button>();
+        btnCloseDialog = dialogRecord.GetComponent<Transform>().Find("Button_CloseDialogRecord").GetComponent<Button>();
         btnCloseItem = item.GetComponent<Transform>().Find("ButtonCloseItem").GetComponent<Button>();
-        btnClosePopup = itemPopup.GetComponent<Transform>().Find("ButtonClosePopup").GetComponent<Button>();
+        btnClosePopup = itemPopup.GetComponent<Transform>().Find("Button_CloseItemPopup").GetComponent<Button>();
         goDialog = transCanvas.Find("Image_Dialog").gameObject;
         btnDialog = transCanvas.Find("Button_Dialog").GetComponent<Button>();
         textDialog = goDialog.transform.Find("Text_Dialog").GetComponent<TextMeshProUGUI>();
-        textItemDescription = itemPopup.transform.Find("TextItemDescription").GetComponent<TextMeshProUGUI>();
-        btnHintReveal = itemPopup.transform.Find("Image").Find("Button_RevealHint").GetComponent<Button>();
+        textItemDescription = itemPopup.transform.Find("Text_ItemDescription").GetComponent<TextMeshProUGUI>();
+        btnHintReveal = itemPopup.transform.Find("Image_Item").Find("Button_RevealHint").GetComponent<Button>();
         textHintCode = itemPopup.transform.Find("Text_HintCode").GetComponent<TextMeshProUGUI>();
 
 
@@ -215,15 +215,15 @@ public class UIManager : MonoBehaviour
 
     public void ChangeItemImage(Sprite sprite)
     {
-        itemPopup.transform.Find("Image").GetComponent<Image>().sprite = sprite;
-        itemPopup.transform.Find("Image").GetComponent<Image>().preserveAspect = true;
+        itemPopup.transform.Find("Image_Item").GetComponent<Image>().sprite = sprite;
+        itemPopup.transform.Find("Image_Item").GetComponent<Image>().preserveAspect = true;
             
     }
 
     public Sprite GetCurrentItemImage()
     {
 
-    return itemPopup.transform.Find("Image").GetComponent<Image>().sprite;
+        return itemPopup.transform.Find("Image_Item").GetComponent<Image>().sprite;
 
     }
 

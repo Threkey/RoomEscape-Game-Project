@@ -41,13 +41,14 @@ public class Dialog : MonoBehaviour
             GameObject go = GameObject.Find("@Managers");
             if (go == null) // go가 없으면
             {
-                go = new GameObject { name = "@Manager" }; // 코드상으로 오브젝트를 만들어 줌
+                go = new GameObject { name = "@Managers" }; // 코드상으로 오브젝트를 만들어 줌
                 go.AddComponent<Dialog>();
             }
 
             DontDestroyOnLoad(go);
             s_instance = go.GetComponent<Dialog>();
         }
+
     }
 
     void InitSetup()
