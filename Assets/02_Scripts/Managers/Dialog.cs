@@ -17,20 +17,27 @@ public class Dialog : MonoBehaviour
         [TextArea(3, 5)]
         public string text;
     }
-
+    [Serializable]
+    public struct DiscreteDialog
+    {
+        public string name;
+        [TextArea(3, 5)]
+        public string text;
+        [HideInInspector]
+        public bool isShowed;
+    }
+    
     [SerializeField]
-    public dialog[] dialogArr;          // 대사 배열
+    public dialog[] dialogArr;                  // 연속 대사 배열
+    [SerializeField]
+    public DiscreteDialog[] discreteDialogArr;  // 개별 대사 배열
 
-    int currentDialogIndex = -1;        // 현재 대사 순서
+    int currentDialogIndex = -1;                // 현재 대사 순서
 
     void Awake()
     {
         Init();
         InitSetup();
-    }
-
-    void Start()
-    {
         gm = Managers.Instance;
     }
 
@@ -54,6 +61,9 @@ public class Dialog : MonoBehaviour
     void InitSetup()
     {
         currentDialogIndex = -1;
+        for (int i = 0; i < discreteDialogArr.Length; i++)
+            discreteDialogArr[i].isShowed = false;
+
     }
 
     public string SetNextDialog()
@@ -77,6 +87,29 @@ public class Dialog : MonoBehaviour
         }
 
         tmp = "<color=orange>" + dialogArr[currentDialogIndex].name + "</color>\n" + dialogArr[currentDialogIndex].text;
+        return tmp;
+    }
+
+    public string SetDiscreteDialog(int index)
+    {
+        // 이름과 텍스트를 합쳐서 반환, 이름이 공백이면 웹에서 이름을 가져옴
+
+        string tmp;
+
+        // index가 배열 범위 밖이면 예외처리
+        if (discreteDialogArr.Length <= index)
+        {
+            Debug.Log("Error : Array Index Out of Bounds Exception");
+            return "<color=red>Error : Array Index Out of Bounds Exception</color>";
+        }
+
+
+        if (discreteDialogArr[index].name == "")
+        {
+            discreteDialogArr[currentDialogIndex].name = gm.GetName();
+        }
+
+        tmp = "<color=orange>" + discreteDialogArr[index].name + "</color>\n" + discreteDialogArr[index].text;
         return tmp;
     }
 

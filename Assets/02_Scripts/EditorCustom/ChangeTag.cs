@@ -45,10 +45,14 @@ public class ChangeTag : EditorWindow
                 {
                     go.tag = stringValue;
                     // 자식 오브젝트까지 태그 변경
-                    for (int i = 0; go.transform.GetChild(i) != null; i++)
+                    if(go.transform.childCount > 0)
                     {
-                        go.transform.GetChild(i).gameObject.tag = stringValue;
+                        for (int i = 0; go.transform.GetChild(i) != null; i++)
+                        {
+                            go.transform.GetChild(i).gameObject.tag = stringValue;
+                        }
                     }
+
                 }
                 catch (Exception e)
                 {

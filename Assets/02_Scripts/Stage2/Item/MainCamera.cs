@@ -10,18 +10,23 @@ public class MainCamera : MonoBehaviour
     public Button btnDown;
 
     public Transform[] transCameras = new Transform[3];
-
-    Transform transCamera1Detail;
-    Transform transCamera2Detail;
+    public Transform transCamera0Detail;
+    public Transform transCamera1Detail;
 
     int currentTransform = 1;
-    bool isDetail = false;
+
+    public GameObject goClosetCollider;
+    public GameObject goHotelSafeCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         btnLeft.onClick.AddListener(MoveCameraLeft);
         btnRight.onClick.AddListener(MoveCameraRight);
+        btnDown.onClick.AddListener(MoveCameraDown);
+
+        transform.position = transCameras[1].position;
+        transform.rotation = transCameras[1].rotation;
     }
 
     void MoveCameraLeft()
@@ -44,5 +49,39 @@ public class MainCamera : MonoBehaviour
 
         if (currentTransform < 2)
             transform.rotation = transCameras[++currentTransform].rotation;
+    }
+
+    void MoveCameraDown()
+    {
+        transform.position = transCameras[currentTransform].position;
+        transform.rotation = transCameras[currentTransform].rotation;
+
+        btnDown.gameObject.SetActive(false);
+        btnRight.gameObject.SetActive(true);
+        if(currentTransform == 1)
+            btnLeft.gameObject.SetActive(true);
+
+        goClosetCollider.SetActive(true);
+        goHotelSafeCollider.SetActive(true);
+    }
+
+    public void MoveCameraClosetDetail()
+    {
+        transform.position = transCamera0Detail.position;
+        transform.rotation = transCamera0Detail.rotation;
+
+        btnDown.gameObject.SetActive(true);
+        btnLeft.gameObject.SetActive(false);
+        btnRight.gameObject.SetActive(false);
+    }
+
+    public void MoveCameraHotelSafeDetail()
+    {
+        transform.position = transCamera1Detail.position;
+        transform.rotation = transCamera1Detail.rotation;
+
+        btnDown.gameObject.SetActive(true);
+        btnLeft.gameObject.SetActive(false);
+        btnRight.gameObject.SetActive(false);
     }
 }

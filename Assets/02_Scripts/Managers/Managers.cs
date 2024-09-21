@@ -26,14 +26,26 @@ public class Managers : MonoBehaviour
     public bool isUnlocked {  get; set; } = false;
 
     // 2Level
-
+    public bool isGetKey {  get; set; } = false;
 
     // Web
     string currentUrl;              //현재 페이지의 URL
     [HideInInspector]
     public string lv2Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_lv2_post";
     [HideInInspector]
+    public string lv4Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_lv4_post";
+    [HideInInspector]
+    public string lv5Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_lv5_post";
+
+    [HideInInspector]
     public string diary1Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_diary1_post";
+    [HideInInspector]
+    public string diary2Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_diary2_post";
+    [HideInInspector]
+    public string diary3Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_diary3_post";
+    [HideInInspector]
+    public string diary4Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_diary4_post";
+
 
     [System.Serializable]
     public class User           // 사용자 데이터를 저장하는 클래스
@@ -41,10 +53,14 @@ public class Managers : MonoBehaviour
         public string name;
     }
 
+    void Awake()
+    {
+        Init();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Init();
         currentUrl = Application.absoluteURL;
     }
 

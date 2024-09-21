@@ -11,12 +11,14 @@ public class Diary2 : MonoBehaviour
     [SerializeField]
     [TextArea(3, 5)]
     string itemDescription;
+    [SerializeField]
+    Sprite itemImage;
     // Start is called before the first frame update
     void Start()
     {
         gm = Managers.Instance;
         ui = UIManager2.Instance;
-        au = GameObject.Find("goPages").GetComponent<AudioSource>();
+        au = GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -26,19 +28,16 @@ public class Diary2 : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (gm.isCharacterNearby(this.gameObject))
+            if (hit.collider.gameObject == this.gameObject)
             {
-                if (hit.collider.gameObject == this.gameObject)
-                {
-                    ui.CloseDialog();
-                    au.Play();
-                    StartCoroutine(gm.coSendData(gm.GetName(), gm.diary1Url));
-                    ui.ChangeItemImage(ui.spriteDiary);
-                    ui.ChangeItemDescription(itemDescription);
-                    ui.ChangeHintCode("");
-                    ui.OpenItemPopup();
-                    this.gameObject.SetActive(false);
-                }
+                ui.CloseDialog();
+                au.Play();
+                StartCoroutine(gm.coSendData(gm.GetName(), gm.diary2Url));
+                ui.ChangeItemImage(itemImage);
+                ui.ChangeItemDescription(itemDescription);
+                ui.ChangeHintCode();
+                ui.OpenItemPopup();
+                this.gameObject.SetActive(false);
             }
         }
     }
