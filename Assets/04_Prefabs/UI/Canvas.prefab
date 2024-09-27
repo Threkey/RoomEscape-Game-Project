@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_VerticalFit: 2
 --- !u!114 &2707048204660598545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 387861736298755856}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -2271,12 +2271,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1024126478984101303}
+  - {fileID: 2628899025725927954}
   - {fileID: 1299557515719445989}
   - {fileID: 7063204846215901208}
   - {fileID: 1449641557860388507}
   - {fileID: 739355449178552146}
   - {fileID: 7072744392940358848}
-  - {fileID: 2628899025725927954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

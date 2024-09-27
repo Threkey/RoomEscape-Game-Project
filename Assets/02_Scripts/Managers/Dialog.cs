@@ -90,6 +90,28 @@ public class Dialog : MonoBehaviour
         return tmp;
     }
 
+    public string SetIndexedDialog(int index)
+    {
+        // 대화 대사를 인덱스로 찾음
+        string tmp;
+
+        currentDialogIndex = index;
+
+        if (currentDialogIndex >= dialogArr.Length)
+        {
+            Debug.Log("Error : Array Index Out of Bounds Exception");
+            return "<color=red>Error : Array Index Out of Bounds Exception</color>";
+        }
+
+
+        if (dialogArr[currentDialogIndex].name == "")
+        {
+            dialogArr[currentDialogIndex].name = gm.GetName();
+        }
+
+        tmp = "<color=orange>" + dialogArr[currentDialogIndex].name + "</color>\n" + dialogArr[currentDialogIndex].text;
+        return tmp;
+    }
     public string SetDiscreteDialog(int index)
     {
         // 이름과 텍스트를 합쳐서 반환, 이름이 공백이면 웹에서 이름을 가져옴

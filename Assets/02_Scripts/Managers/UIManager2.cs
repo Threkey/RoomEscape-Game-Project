@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager2 : MonoBehaviour
@@ -78,6 +79,7 @@ public class UIManager2 : MonoBehaviour
         btnOpenDialogRecord.onClick.AddListener(OpenDialogRecord);
         btnCloseDialogRecord.onClick.AddListener(CloseDialogRecord);
         btnCloseItemPopup.onClick.AddListener(CloseItemPopup);
+
         ShowDialog();
     }
 
@@ -115,15 +117,27 @@ public class UIManager2 : MonoBehaviour
         btnDialog.gameObject.SetActive(true);
 
         // 다이얼로그 레코드에 추가
-        GameObject goTemp = new GameObject("Text_DialogRecord");
-        goTemp.transform.SetParent(goContent.transform);
-        goTemp.AddComponent<RectTransform>().sizeDelta = new Vector2(0.0f, 230.0f);
-        goTemp.AddComponent<TextMeshProUGUI>().fontSize = 40.0f;
-        goTemp.GetComponent<TextMeshProUGUI>().text = textDialog.text;
-        goTemp.name += dl.GetCurrentDialogIndex();
+        if(goContent.transform.Find("Text_DialogRecord"+dl.GetCurrentDialogIndex()) == null)
+        {
+            GameObject goTemp = new GameObject("Text_DialogRecord");
+            goTemp.transform.SetParent(goContent.transform);
+            goTemp.AddComponent<RectTransform>().sizeDelta = new Vector2(0.0f, 230.0f);
+            goTemp.AddComponent<TextMeshProUGUI>().fontSize = 40.0f;
+            goTemp.GetComponent<TextMeshProUGUI>().text = textDialog.text;
+            goTemp.name += dl.GetCurrentDialogIndex();
+        }
     }
 
     public void ShowDialog(int index)
+    {
+        // 일반 Dialog
+        textDialog.text = dl.SetIndexedDialog(index);
+
+        goDialog.SetActive(true);
+        btnDialog.gameObject.SetActive(true);
+    }
+
+    public void ShowDiscreteDialog(int index)
     {
         // DicreteDialog
         textDialog.text = dl.SetDiscreteDialog(index);
@@ -146,8 +160,14 @@ public class UIManager2 : MonoBehaviour
 
     public void CloseDialog()
     {
+        // 하단 다이얼로그 닫기
         goDialog.SetActive(false);
         btnDialog.gameObject.SetActive(false);
+
+        // 연속 대화
+        if (SceneManager.GetActiveScene().name == "Stage3")
+            if (dl.GetCurrentDialogIndex() >= 2 && dl.GetCurrentDialogIndex() < 6)
+                ShowDialog();
     }
 
     public void OpenDialogRecord()

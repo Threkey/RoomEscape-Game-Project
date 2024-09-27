@@ -28,6 +28,9 @@ public class Managers : MonoBehaviour
     // 2Level
     public bool isGetKey {  get; set; } = false;
 
+    // 3Level
+    public bool isGrandmotherTalked { get; set; } = false;
+
     // Web
     string currentUrl;              //현재 페이지의 URL
     [HideInInspector]
@@ -45,6 +48,9 @@ public class Managers : MonoBehaviour
     public string diary3Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_diary3_post";
     [HideInInspector]
     public string diary4Url = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_diary4_post";
+
+    [HideInInspector]
+    public string mapUrl = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_map_post";
 
 
     [System.Serializable]

@@ -1883,18 +1883,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8846737274113074935, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
   m_PrefabInstance: {fileID: 896280930}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &535991301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535991297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a9afb42b94bd64eb6d294a5a2c31ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &580508082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5158000099602899757, guid: b4513cb206fe7a34a91c2f25643b9db4, type: 3}
@@ -3164,22 +3152,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 94186211542482538, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 94186211542482538, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846737273989625697, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846737273989625697, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8846737274113074932, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3224,17 +3196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveEffect
       objectReference: {fileID: 0}
-    - target: {fileID: 8846737274113074935, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8846737274113074935, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 535991301}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a74a0aefeb7674ca32535d1a269b4a, type: 3}
 --- !u!4 &930333486 stripped
 Transform:
@@ -4351,6 +4316,7 @@ MonoBehaviour:
   - name: 
     text: "\uC228\uACA8\uC9C4 \uBB38\uC774\uB2E4. \uC5B4\uC9F8\uC11C \uC774\uB7F0
       \uACF3\uC5D0 \uBB38\uC774 \uC788\uB294\uAC70\uC9C0?"
+  discreteDialogArr: []
 --- !u!1 &1302282399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 879928824326363174, guid: db161f70475f8c94a86d0bcecb9ecfae, type: 3}
@@ -4383,7 +4349,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 78404a602956e164cb2ec0fd16561ffb, type: 2}
   m_BuildHeightMesh: 0
@@ -6357,7 +6323,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: fc7b3d3c52d85be4c81a2d90da4c9575, type: 2}
   m_BuildHeightMesh: 0

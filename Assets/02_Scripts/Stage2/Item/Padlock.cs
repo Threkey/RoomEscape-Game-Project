@@ -45,7 +45,7 @@ public class Padlock : MonoBehaviour
                 }
                 else if(gm.isGetKey == false)
                 {
-                    ui.ShowDialog(0);
+                    ui.ShowDiscreteDialog(0);
                 }
             }
         }
