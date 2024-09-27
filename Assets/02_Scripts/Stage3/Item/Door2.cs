@@ -11,6 +11,7 @@ public class Door2 : MonoBehaviour
 
     public Camera subCamera;
     public GameObject mainCanvas;
+    public GameObject subCanvasScreenSpace;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,9 @@ public class Door2 : MonoBehaviour
             {
                 if (hit.collider.gameObject == this.gameObject)
                 {
-                    // 메인 캔버스 끄고 서브카메라 뎁스 1로
+                    // 메인 캔버스 끄고 서브 캔버스 키고 서브카메라 뎁스 1로
                     mainCanvas.SetActive(false);
+                    subCanvasScreenSpace.SetActive(true);
                     subCamera.depth = 1;
                 }
             }

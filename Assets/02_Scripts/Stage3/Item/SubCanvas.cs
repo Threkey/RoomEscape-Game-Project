@@ -14,7 +14,9 @@ public class SubCanvas : MonoBehaviour
     public Button btnUnlock;
     public Camera subCamera;
     public GameObject mainCanvas;
+    public GameObject subCanvasScreenSpace;
     public GameObject goMagicCircleBoundary;                        // 마법진 테두리
+    public GameObject goUnlockMessage;
 
     Vector3 initPos;
     // Start is called before the first frame update
@@ -53,6 +55,7 @@ public class SubCanvas : MonoBehaviour
         if (stack == 4)
         {
             StartCoroutine(gm.coSendData(gm.GetName(), gm.lv4Url));
+            goUnlockMessage.SetActive(true);
         }
         else
         {
@@ -65,6 +68,7 @@ public class SubCanvas : MonoBehaviour
     {
         subCamera.depth = -1;
         mainCanvas.SetActive(true);
+        subCanvasScreenSpace.SetActive(false);
     }
 
     IEnumerator coButtonShaking()

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using static System.Net.WebRequestMethods;
 
 public class Managers : MonoBehaviour
 {
@@ -62,11 +63,6 @@ public class Managers : MonoBehaviour
     void Awake()
     {
         Init();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         currentUrl = Application.absoluteURL;
     }
 
