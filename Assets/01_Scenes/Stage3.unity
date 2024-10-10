@@ -10849,7 +10849,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.016666668
   m_MinRegionArea: 5
-  m_NavMeshData: {fileID: 23800000, guid: 1df9b79999829544b92483161c916a84, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 93a5b22e3b24f34488a532098bae2ec9, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1705958904 stripped
 Transform:
@@ -11509,6 +11509,7 @@ MonoBehaviour:
   mapUrl: https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_map_post
   hiddenUrl: https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_hidden_post
   dragUrl: https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_drag_post
+  blurUrl: https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_blur_post
 --- !u!114 &1777208037
 MonoBehaviour:
   m_ObjectHideFlags: 0

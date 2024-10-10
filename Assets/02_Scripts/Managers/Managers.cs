@@ -36,6 +36,14 @@ public class Managers : MonoBehaviour
     public bool isUnlocked2 { get; set; } = false;
     public bool isGetTools { get; set; } = false;
 
+    // 4.5Level
+    public bool isSaltSelected { get; set; } = false;
+    public bool isAmuletSelected { get; set; } = false;
+    public bool isLighterSelected { get; set; } = false;
+    public bool isSaltUsed { get; set; } = false;
+    public bool isAmuletUsed { get; set; } = false;
+    public bool isLighterUsed { get; set; } = false;
+
     // Web
     string currentUrl;              //현재 페이지의 URL
     [HideInInspector]
@@ -60,6 +68,8 @@ public class Managers : MonoBehaviour
     public string hiddenUrl = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_hidden_post";
     [HideInInspector]
     public string dragUrl = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_drag_post";
+    [HideInInspector]
+    public string blurUrl = "https://8nlx1uzb6j.execute-api.ap-northeast-2.amazonaws.com/escape/escape_blur_post";
 
 
     [System.Serializable]
