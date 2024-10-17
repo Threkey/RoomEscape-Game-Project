@@ -17,9 +17,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/01_Scenes/Stage3.unity
     guid: fee4f324e2e35e74f923205bbfe51085
-  - enabled: 1
+  - enabled: 0
     path: Assets/01_Scenes/Stage4.unity
     guid: 806a490a1beb9b24e9ad6d2b8a4173fe
+  - enabled: 0
+    path: Assets/01_Scenes/Stage4.5.unity
+    guid: b7ef1e0cdc0a9424ca907c46b397d6a5
+  - enabled: 0
+    path: Assets/01_Scenes/Stage5-1.unity
+    guid: cb8da2e6cdf35f543bc45be18795f65e
+  - enabled: 1
+    path: Assets/01_Scenes/Stage5-2.unity
+    guid: 923adc4b272534e478b2c7352197a2ef
   - enabled: 0
     path: Assets/01_Scenes/WebTest.unity
     guid: 48bbdedae17f38d489e693914c4940bd
