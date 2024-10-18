@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -44,6 +45,10 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public Button btnDoorOpen;
     TextMeshProUGUI textUnlockMessage;
+
+    public GameObject goRedButton;
+    public GameObject goBook;
+    public GameObject goBookFalled;
 
     Camera subCamera;
 
@@ -237,6 +242,9 @@ public class UIManager : MonoBehaviour
             au.pitch = 1.0f;
             au.Play();
             gm.isGetHint = true;
+            goBook.SetActive(false);
+            goBookFalled.SetActive(true);
+            goRedButton.SetActive(true);
         }
 
         else if (GetCurrentItemImage() == spritePaintingB)

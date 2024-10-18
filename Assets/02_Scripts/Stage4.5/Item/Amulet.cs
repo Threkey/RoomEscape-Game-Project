@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Amulet : MonoBehaviour
 {
     Managers gm;
+    AudioSource au;
+
     public GameObject goItem;       // Active시킬 오브젝트
     public GameObject goItemSlot;
     public GameObject goFadeOut;
@@ -14,6 +16,7 @@ public class Amulet : MonoBehaviour
     private void Start()
     {
         gm = Managers.Instance;
+        au = GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -29,6 +32,8 @@ public class Amulet : MonoBehaviour
                     goItemSlot.SetActive(false);
                     gm.isLighterUsed = true;
                     goFadeOut.SetActive(true);
+                    au.Play();
+                    StartCoroutine(gm.coSendData(gm.GetName(), gm.lv5Url));
                 }
         }
     }

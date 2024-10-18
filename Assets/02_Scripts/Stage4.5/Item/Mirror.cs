@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class Mirror : MonoBehaviour
 {
     Managers gm;
+    AudioSource au;
+
     public GameObject goItem;       // Active시킬 오브젝트
     public GameObject goItemSlot;
 
     private void Start()
     {
         gm = Managers.Instance;
+        au = GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -27,6 +30,7 @@ public class Mirror : MonoBehaviour
                     goItem.SetActive(true);
                     goItemSlot.SetActive(false);
                     gm.isAmuletUsed = true;
+                    au.Play();
                 }
         }
     }

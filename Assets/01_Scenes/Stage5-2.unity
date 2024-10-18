@@ -179,9 +179,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=60><b>Escape Room<b></size>\n\n\n<size=45>\uC815\uC7AC\uD76C</size>\n<size=35>jamong1014.tistory.com\r</size>\nAWS
-    Serverless Architecture\r\nWeb Frontend/Backend\r\nDesign\r\nPuzzle\n\n\n<size=45>\uAE40\uD638\uD604</size>\n<size=35>github.com/Threkey</size>\nProgramming
-    (Unity)\nMusic\nDesign\nPuzzle"
+  m_text: "<size=60><b>Escape Room<b></size>\n\n\n<size=45>Jung Jaehee</size>\n<size=35>jamong1014.tistory.com\r</size>\nAWS
+    Serverless Architecture\r\nWeb Frontend/Backend\r\nDesign\r\nPuzzle\n\n\n<size=45>Kim
+    Hohyeon</size>\n<size=35>github.com/Threkey</size>\nProgramming (Unity)\nMusic\nDesign\nPuzzle"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c7ac18da85269b47b25ce7673486a10, type: 2}
   m_sharedMaterial: {fileID: -605506182377542735, guid: 5c7ac18da85269b47b25ce7673486a10, type: 2}
@@ -1142,12 +1142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 1200}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1556,9 +1556,11 @@ MonoBehaviour:
     \uC774\uBBF8\uC9C0 : Photo from pngegg.com (https://www.pngegg.com/en/png-onbtc)\r\n\uC5D4\uB529
     \uCC45 \uACE0\uBB38\uBC34\uB4DC : Photo from pngegg.com (https://www.pngegg.com/en/png-clcmr)\r\n\uC5D4\uB529
     \uCC45 : Photo from pngegg.com (https://www.pngegg.com/en/png-emtee)\r\n\uAC70\uC6B8
-    : Photo by Westland London\n(https://www.westlandlondon.com/antiques/search/view/16125.asp)\n\uC9C0\uB3C4\uCC45
+    : Photo by Westland London\n(https://www.westlandlondon.com/antiques/search/view/16125.asp)\n\uB9AC\uB354\uBCF4\uB4DC
+    \uC544\uC774\uCF58 : Photo from pngwing (https://www.pngwing.com/ko/free-png-zhxeq)\n\uC9C0\uB3C4\uCC45
     \uC9C0\uAD6C\uBCF8 \uC774\uBBF8\uC9C0 : Photo from Pngwing\r\n(https://www.pngwing.com/en/free-png-bhsol)\r\n\uBD80\uC801
-    \uC774\uBBF8\uC9C0 : Photo by \uC74C\uC591\uC624\uD589 \uB85C\uACE0 \uBE0C\uB79C\uB4DC\r\n(https://blog.naver.com/clay21/150135096689)\r\n\uBB38
+    \uC774\uBBF8\uC9C0 : Photo by \uC74C\uC591\uC624\uD589 \uB85C\uACE0 \uBE0C\uB79C\uB4DC\r\n(https://blog.naver.com/clay21/150135096689)\r\n\uC2A4\uC704\uCE58
+    \uC774\uBBF8\uC9C0 : home switch PNG from https://pngtree.com/freepng/modern-wall-switch-button_748795.html?sol=downref&id=bef\n\uBB38
     \uC5F4\uB9AC\uB294 \uC18C\uB9AC : locking a door_01.wav by Dymewiz -- https://freesound.org/s/131024/
     -- License: Attribution 3.0\r\n\uC790\uBB3C\uC1E0 \uB3CC\uB9AC\uB294 \uC18C\uB9AC
     : Click.wav by budek -- https://freesound.org/s/513481/ -- License: Creative
@@ -1573,7 +1575,9 @@ MonoBehaviour:
     \uC18C\uB9AC : Metal chain set down on hard floor 2.wav by 99021905683 -- https://freesound.org/s/571331/
     -- License: Creative Commons 0\r\n\uC774\uBA74 \uC138\uACC4 \uBB38 \uB2EB\uD788\uB294
     \uC18C\uB9AC : Opening closing computer room door.wav by WaveAdventurer -- https://freesound.org/s/182038/
-    -- License: Attribution 4.0"
+    -- License: Attribution 4.0\n\uC18C\uAE08 \uBFCC\uB9AC\uB294 \uC18C\uB9AC : salt.wav
+    by saha213131 -- https://freesound.org/s/668739/ -- License: Creative Commons
+    0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c7ac18da85269b47b25ce7673486a10, type: 2}
   m_sharedMaterial: {fileID: -605506182377542735, guid: 5c7ac18da85269b47b25ce7673486a10, type: 2}
@@ -1600,8 +1604,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

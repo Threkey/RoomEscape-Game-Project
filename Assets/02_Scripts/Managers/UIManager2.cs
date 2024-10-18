@@ -166,7 +166,7 @@ public class UIManager2 : MonoBehaviour
 
         // 연속 대화
         if (SceneManager.GetActiveScene().name == "Stage3")
-            if (dl.GetCurrentDialogIndex() >= 2 && dl.GetCurrentDialogIndex() < 6)
+            if (dl.GetCurrentDialogIndex() >= 2 && dl.GetCurrentDialogIndex() < 8)
                 ShowDialog();
     }
 

@@ -24,13 +24,16 @@ public class Tools : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
             if (hit.collider.gameObject == gameObject && !EventSystem.current.IsPointerOverGameObject())
             {
-                ui.ChangeItemDescription(itemDescription);
-                ui.ChangeItemImage(itemImage);
-                ui.ChangeHintCode();
-                ui.OpenItemPopup();
-                gm.isGetTools = true;
-                StartCoroutine(gm.coSendData(gm.GetName(), gm.hiddenUrl));
-                gameObject.SetActive(false);
+                if (gm.isUnlocked2)
+                {
+                    ui.ChangeItemDescription(itemDescription);
+                    ui.ChangeItemImage(itemImage);
+                    ui.ChangeHintCode();
+                    ui.OpenItemPopup();
+                    gm.isGetTools = true;
+                    StartCoroutine(gm.coSendData(gm.GetName(), gm.hiddenUrl));
+                    gameObject.SetActive(false);
+                }
             }
     }
 }

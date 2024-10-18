@@ -25,6 +25,7 @@ public class PadLockEmissionColor : MonoBehaviour
 
     public void BlinkingMaterial()
     {
+        /*
         _myRuller.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
         
         if (_isSelect)
@@ -35,6 +36,7 @@ public class PadLockEmissionColor : MonoBehaviour
         {
             _myRuller.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.clear);
         }
+        */
 
     }
 }
