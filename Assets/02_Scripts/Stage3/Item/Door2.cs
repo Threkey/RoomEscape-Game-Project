@@ -29,7 +29,7 @@ public class Door2 : MonoBehaviour
         {
             if (gm.isCharacterNearby(this.gameObject))
             {
-                if (hit.collider.gameObject == this.gameObject)
+                if (hit.collider.gameObject == this.gameObject && gm.isDoorClosed)
                 {
                     // 메인 캔버스 끄고 서브 캔버스 키고 서브카메라 뎁스 1로
                     mainCanvas.SetActive(false);

@@ -10,12 +10,14 @@ public class RoomChange : MonoBehaviour
     public GameObject goDoor;
 
     UIManager2 ui;
+    Managers gm;
 
     public float  xSize = 1.0f, zSize = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
         ui = UIManager2.Instance;
+        gm = Managers.Instance;
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class RoomChange : MonoBehaviour
                 goMainRoom.SetActive(true);
                 goMirrorRoom.SetActive(false);
                 goDoor.GetComponent<AudioSource>().Play();
+                gm.isDoorClosed = true;
             }
         }
     }

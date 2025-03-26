@@ -31,6 +31,7 @@ public class Managers : MonoBehaviour
 
     // 3Level
     public bool isGrandmotherTalked { get; set; } = false;
+    public bool isDoorClosed { get; set; } = false;
 
     // 4Level
     public bool isUnlocked2 { get; set; } = false;
